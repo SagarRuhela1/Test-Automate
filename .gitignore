@@ -1,0 +1,92 @@
+# -------------------------------
+# Python general
+# -------------------------------
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environments
+venv/
+env/
+.myenv/
+.my_env/
+*.env
+*.venv
+myenv/
+ENV/
+
+# Byte-compiled / optimized / DLL files
+*.pyo
+*.pyd
+*.so
+
+# Build and distribution
+build/
+dist/
+*.egg-info/
+.eggs/
+*.egg
+
+# Installer logs
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Unit test / coverage reports
+htmlcov/
+.tox/
+.nox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+*.py,cover
+.hypothesis/
+.pytest_cache/
+
+# Pytest specific
+reports/
+test-results/
+.log/
+*.log
+
+# Playwright specific
+playwright-report/
+test-results/
+state.json
+*.zip
+*.webm
+*.png
+*.jpg
+
+# Jupyter Notebooks
+.ipynb_checkpoints
+
+# IDE & Editor settings
+.vscode/
+.idea/
+*.swp
+*.swo
+*.DS_Store
+
+# System files
+Thumbs.db
+.DS_Store
+desktop.ini
+
+# Temporary files
+tmp/
+temp/
+*.tmp
+
+# Environment and configuration
+.env
+.env.*
+*.ini
+*.cfg
+*.toml
+
+# Logs
+logs/
+*.log
