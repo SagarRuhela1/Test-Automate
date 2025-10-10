@@ -4,7 +4,7 @@ from pages.login_page import LoginPage
 
 @pytest.fixture(scope="session")
 def browser_context(playwright):
-    browser= playwright.chromium.launch(headless=False)
+    browser= playwright.chromium.launch(headless=True)
     context=browser.new_context()
     page =context.new_page()
     login_page=LoginPage(page)
