@@ -11,7 +11,7 @@ def browser_context(playwright):
     context=browser.new_context()
     page =context.new_page()
     login_page=LoginPage(page)
-    page.goto("https://www.saucedemo.com/")
+    page.goto("https://www.saucedemo.com/", wait_until="networkidle")
     login_page.fillUserName("standard_user")
     login_page.fillPassword("secret_sauce")
     login_page.clickLoginBtn()

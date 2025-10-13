@@ -11,6 +11,7 @@ class AboutPage:
         self.menu_button.click()
 
     def click_about_link(self):
+        self.about_link.wait_for(state="visible")
         self.about_link.click()
 
     def verify_about_page(self):
