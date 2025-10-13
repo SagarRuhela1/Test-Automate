@@ -32,9 +32,6 @@ def page(browser_context, browser):
     page.close()
 
 
-# Ensure screenshot folder exists
-os.makedirs("reports/screenshots", exist_ok=True)
-
 @pytest.hookimpl(hookwrapper=True)
 def pytest_runtest_makereport(item, call):
     outcome = yield
@@ -47,16 +44,13 @@ def pytest_runtest_makereport(item, call):
             screenshot_path = f"reports/screenshots/{safe_name}.png"
             page.screenshot(path=screenshot_path, full_page=True)
 
-            # Attach to HTML report
-            if hasattr(report, "extra"):
-                extra = report.extra
-            else:
-                extra = []
-
             try:
                 import pytest_html
-                html = f'<div><img src="screenshots/{safe_name}.png" alt="screenshot" style="width:600px;height:auto;" onclick="window.open(this.src)"/></div>'
-                extra.append(pytest_html.extras.html(html))
-                report.extra = extra
+                html = f'<div><img src="screenshots/{safe_name}.png" ' \
+                       f'alt="screenshot" style="width:600px;height:auto;" ' \
+                       f'onclick="window.open(this.src)"/></div>'
+                extras = getattr(report, "extras", [])
+                extras.append(pytest_html.extras.html(html))
+                report.extras = extras
             except ImportError:
                 pass
