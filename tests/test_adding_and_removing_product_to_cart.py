@@ -3,7 +3,7 @@ from pages.adding_to_cart import AddingToCart
 
 def test_add_items_to_cart(page):
     cart = AddingToCart(page)
-    page.goto("https://www.saucedemo.com/inventory.html")
+    page.goto("https://www.saucedemo.com/inventory.html", wait_until="networkidle")
     cart.add_backpack()
     cart.add_bike()
     cart.go_to_cart()
@@ -13,7 +13,7 @@ def test_add_items_to_cart(page):
 
 def test_remove_items_from_cart(page):
     cart = AddingToCart(page)
-    page.goto("https://www.saucedemo.com/inventory.html")
+    page.goto("https://www.saucedemo.com/inventory.html", wait_until="networkidle")
     cart.add_backpack()
     cart.add_bike()
     cart.go_to_cart()

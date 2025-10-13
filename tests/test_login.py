@@ -1,5 +1,4 @@
-import re
-from playwright.sync_api import sync_playwright, expect
+from playwright.sync_api import  expect
 from pages.login_page import LoginPage
 
 def test_login_user(page):
@@ -10,7 +9,7 @@ def test_login_user(page):
     login_page.fillPassword("secret_sauce")
     login_page.clickLoginBtn()
     page.wait_for_timeout(2000)
-    expect(page.locator("[data-test=\"title\"]")).to_contain_text("Products")
+    expect(login_page.main_page_title).to_contain_text("Products")
 
 
 

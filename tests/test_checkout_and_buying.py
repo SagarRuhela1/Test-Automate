@@ -1,13 +1,10 @@
-import re
-from playwright.sync_api import sync_playwright, expect
-from pages.adding_to_cart import AddingToCart
-
+from playwright.sync_api import  expect
 from playwright.sync_api import expect
 from pages.checkout import CheckoutPage
 
 def test_checkout_backpack_and_buying(page):
     checkout = CheckoutPage(page)
-    page.goto("https://www.saucedemo.com/inventory.html")
+    page.goto("https://www.saucedemo.com/inventory.html", wait_until="networkidle")
     checkout.select_backpack_item()
     expect(checkout.verify_product_detail()).to_contain_text("Sauce Labs Backpack")
     checkout.add_to_cart()

@@ -5,6 +5,7 @@ class LoginPage:
         self.userNameInput= page.locator("[data-test=\"username\"]")
         self.passwordInput=page.locator("[data-test=\"password\"]")
         self.login_Button=page.locator("[data-test=\"login-button\"]")
+        self.main_page_title=page.locator("[data-test=\"title\"]")
 
     def fillUserName(self, userName:str):
         self.userNameInput.fill(userName)    
