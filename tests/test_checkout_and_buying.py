@@ -18,4 +18,5 @@ def test_checkout_backpack_and_buying(page):
     expect(checkout.orderCompleteHeader).to_contain_text("Thank you for your order!")
     expect(checkout.backToProductsBtn).to_be_visible()
     checkout.go_back_to_products()
+    print("test run successfully")
     expect(checkout.checkoutTitle).to_contain_text("Products")
