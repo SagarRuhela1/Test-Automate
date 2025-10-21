@@ -56,31 +56,6 @@ pytest -n <number_of_workers>
 
 ---
 
-# 🧩 Project Structure
-
-```
-project/
-│
-├── pages/                # Page Object Model classes
-│   ├── login_page.py
-│   ├── inventory_page.py
-│   ├── adding_to_cart.py
-│   ├── cart_page.py
-│   └── checkout_page.py
-│
-├── tests/                # Test scripts
-│   ├── test_cart.py
-│   ├── test_inventory_page.py
-│   └── test_full_purchase_flow.py
-│
-├── config/               # Config files (YAML or CSV)
-│   └── test_config.yaml
-│
-├── reports/              # HTML test reports
-├── conftest.py           # Fixtures (config, CSV readers, etc.)
-├── pytest.ini            # Pytest configuration
-└── requirements.txt      # Python dependencies
-```
 
 ---
 
