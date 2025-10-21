@@ -57,8 +57,6 @@ pytest -n <number_of_workers>
 ---
 
 
----
-
 # 📦 Features
 
 * **Page Object Model (POM):** Reusable page classes for clean, maintainable tests
