@@ -1,22 +1,28 @@
-import pytest
-from playwright.sync_api import sync_playwright,expect
-from pages.login_page import LoginPage
-import os
+import yaml, csv, pytest
+from pathlib import Path
+from playwright.sync_api import expect
+
+ROOT = Path(__file__).parent
 
 @pytest.fixture(scope="session")
-def browser_context(playwright):
-    # device=playwright.devices["iPhone SE"]
-    browser= playwright.chromium.launch(headless=True)
-    #context=browser.new_context(**device)
-    context=browser.new_context()
-    page =context.new_page()
-    login_page=LoginPage(page)
-    page.goto("https://www.saucedemo.com/", wait_until="networkidle")
-    login_page.fillUserName("standard_user")
-    login_page.fillPassword("secret_sauce")
-    login_page.clickLoginBtn()
-    expect(page.locator("[data-test=\"title\"]")).to_contain_text("Products")
+def config():
+    with open(ROOT / "config.yaml") as f:
+        return yaml.safe_load(f)
 
+@pytest.fixture(scope="session")
+def products_list():
+    with open(ROOT / "products.csv") as f:
+        return [line.strip() for line in f if line.strip()]
+
+@pytest.fixture(scope="session")
+def browser_context(playwright, config):
+    browser = playwright.chromium.launch(headless=False)
+    context = browser.new_context()
+    page = context.new_page()
+    page.goto(config["base_url"], wait_until="networkidle")
+    from pages.login_page import LoginPage
+    LoginPage(page).login(config["credentials"]["valid"]["username"], config["credentials"]["valid"]["password"])
+    expect(page.locator("[data-test='title']")).to_contain_text("Products")
     context.storage_state(path="state.json")
     yield context
     context.close()
@@ -24,12 +30,11 @@ def browser_context(playwright):
 
 @pytest.fixture
 def page(browser_context, browser):
-    # Create a new page using new browser but with same session
-    # i am doing this so we can the test in parallel
-    context=browser.new_context(storage_state="state.json")
-    page=context.new_page()
+    context = browser.new_context(storage_state="state.json")
+    page = context.new_page()
     yield page
     page.close()
+
 
 
 @pytest.hookimpl(hookwrapper=True)

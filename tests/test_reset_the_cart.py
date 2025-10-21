@@ -1,8 +1,10 @@
+# test_reset_app_state.py
 from pages.reset_app_state import ResetAppState
+from playwright.sync_api import expect
 
-def test_reset_app_state_functionality(page):
+def test_reset_app_state_functionality(page, config):
     reset_page = ResetAppState(page)
-    page.goto("https://www.saucedemo.com/inventory.html", wait_until="networkidle")
+    page.goto(config["inventory_url"], wait_until="networkidle")
     reset_page.add_items_to_cart()
     reset_page.open_menu()
     reset_page.reset_app_state()

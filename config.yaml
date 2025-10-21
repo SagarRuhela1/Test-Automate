@@ -1,0 +1,16 @@
+base_url: "https://www.saucedemo.com"
+inventory_url: "https://www.saucedemo.com/inventory.html"
+checkout_url: "https://www.saucedemo.com/checkout-step-one.html"
+
+credentials:
+  valid:
+    username: "standard_user"
+    password: "secret_sauce"
+  invalid:
+    username: "invalid_user"
+    password: "wrong_password"
+customer_info:
+  first: "Sagar"
+  last: "Ruhela"
+  postal: "110001"
+

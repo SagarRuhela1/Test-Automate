@@ -1,17 +1,17 @@
-from playwright.sync_api import  expect
+import pytest
 from pages.login_page import LoginPage
+from pages.inventory_page import InventoryPage
 
-def test_login_user(page):
-    login_page=LoginPage(page)
-    page.goto("https://www.saucedemo.com/")
-    page.wait_for_timeout(2000)
-    login_page.fillUserName("standard_user")
-    login_page.fillPassword("secret_sauce")
-    login_page.clickLoginBtn()
-    page.wait_for_timeout(2000)
-    expect(login_page.main_page_title).to_contain_text("Products")
+@pytest.mark.parametrize("cred_key, should_succeed", [("valid", True), ("invalid", False)])
+def test_login_variants(page, config, cred_key, should_succeed):
+    login = LoginPage(page)
+    login.goto(config["base_url"])
+    user = config["credentials"][cred_key]["username"]
+    pwd = config["credentials"][cred_key]["password"]
+    login.login(user, pwd)
 
-
-
-
-    
+    if should_succeed:
+        InventoryPage(page).assert_on_inventory()
+    else:
+        err = login.get_error_message()
+        assert err, "Expected error for invalid login"

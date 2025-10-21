@@ -1,14 +1,14 @@
 from playwright.sync_api import Page
 
 class LogoutPage:
-    def __init__(self, page:Page):
-        self.menu= page.get_by_role("button", name="Open Menu")
-        self.logout_button=page.get_by_role("link", name="Logout")
-        self.login_button=page.locator("[data-test=\"login-button\"]")
-        print()
+    def __init__(self, page: Page):
+        self.page = page
+        self.menu_button = page.get_by_role("button", name="Open Menu")
+        self.logout_link = page.locator("[data-test='logout-sidebar-link']")
+        self.login_button = page.locator("[data-test='login-button']")
 
-    def openMenu(self):
-        self.menu.click()        
+    def open_menu(self):
+        self.menu_button.click()
 
-    def clickLogoutBtn(self):
-        self.logout_button.click()
+    def click_logout(self):
+        self.logout_link.click()

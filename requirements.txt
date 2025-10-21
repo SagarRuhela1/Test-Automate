@@ -1,0 +1,21 @@
+# Core testing framework
+pytest>=7.0
+
+# Playwright for browser automation
+playwright>=1.30.0
+pytest-playwright>=0.3.0
+
+# Parallel test execution
+pytest-xdist>=3.2.2
+
+# Rerun failed tests
+pytest-rerunfailures>=10.0
+
+# HTML reports
+pytest-html>=3.1.1
+
+# Allure reporting
+allure-pytest>=2.12.0
+
+# YAML config support
+PyYAML>=6.0
