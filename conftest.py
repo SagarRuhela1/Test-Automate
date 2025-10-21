@@ -16,7 +16,7 @@ def products_list():
 
 @pytest.fixture(scope="session")
 def browser_context(playwright, config):
-    browser = playwright.chromium.launch(headless=False)
+    browser = playwright.chromium.launch(headless=True)
     context = browser.new_context()
     page = context.new_page()
     page.goto(config["base_url"], wait_until="networkidle")
