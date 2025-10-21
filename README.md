@@ -30,12 +30,7 @@ Create a `pytest.ini` file in the root directory with the following content:
 [pytest]
 testpaths = tests
 python_files = test_*.py *_test.py
-markers =
-    smoke: Quick smoke tests
-    regression: Full regression tests
-addopts = --headed -v --html=reports/report.html --self-contained-html --maxfail=2 --reruns=2
-log_cli = true
-log_cli_level = INFO
+addopts = --headed -v --html=reports/report.html --self-contained-html --maxfail=2 --reruns 2
 ```
 
 > **Note:** You can remove or adjust `--headed`, `--maxfail`, and `--reruns` based on your preferences.
