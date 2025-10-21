@@ -1,4 +1,3 @@
-# test_cart.py
 from playwright.sync_api import expect
 from pages.adding_to_cart import AddingToCart
 

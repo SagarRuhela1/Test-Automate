@@ -14,8 +14,7 @@ class CheckoutPage:
         self.first_name.fill(first)
         self.last_name.fill(last)
         self.postal_code.fill(postal)
-        self.continue_button.click()
-        self.page.wait_for_load_state("networkidle")
+
 
     def finish_checkout(self):
         if not self.finish_button.is_visible():

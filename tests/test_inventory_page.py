@@ -1,4 +1,3 @@
-# test_inventory_page.py
 from playwright.sync_api import expect
 from pages.inventory_page import InventoryPage
 
@@ -6,8 +5,6 @@ from pages.inventory_page import InventoryPage
 def test_inventory_page_loads(page, config):
     inventory = InventoryPage(page)
     page.goto(config["inventory_url"], wait_until="networkidle")
-
-    # Verify you are on the inventory page
     inventory.assert_on_inventory()
     expect(page).to_have_url(config["inventory_url"])
 

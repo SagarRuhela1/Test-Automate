@@ -1,4 +1,3 @@
-# test_about.py
 from pages.about_page import AboutPage
 
 def test_about_page_opening(page, config):

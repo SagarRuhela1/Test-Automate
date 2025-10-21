@@ -1,4 +1,3 @@
-# test_reset_app_state.py
 from pages.reset_app_state import ResetAppState
 from playwright.sync_api import expect
 

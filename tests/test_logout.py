@@ -1,4 +1,3 @@
-# test_logout.py
 from playwright.sync_api import expect
 from pages.logout_page import LogoutPage
 

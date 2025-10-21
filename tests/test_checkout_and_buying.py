@@ -16,6 +16,8 @@ def test_checkout_backpack_and_buying(page, config):
     config["customer_info"]["first"],
     config["customer_info"]["last"],
     config["customer_info"]["postal"])
+    checkout.continue_button.click()
+    page.wait_for_load_state("networkidle")
     checkout.finish_checkout()
     confirmation_text = checkout.get_confirmation_text()
     assert confirmation_text == "Thank you for your order!"
